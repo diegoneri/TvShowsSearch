@@ -7,7 +7,7 @@ const handleSearch = async (event) => {
     `https://api.tvmaze.com/search/shows?q= + ${query}`
   )
     .then((response) => console.log(response))
-    .then((result) => exibirMensagem(result.json));
+    .then((result) => exibirMensagem(result.json()));
 
   // implemente a consulta a partir daqui
 
