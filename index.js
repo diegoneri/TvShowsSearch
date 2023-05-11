@@ -5,9 +5,9 @@ const handleSearch = async (event) => {
 
   const apiResponse = await fetch(
     `https://api.tvmaze.com/search/shows?q= + ${query}`
-  )
-    .then((response) => console.log(response))
-    .then((result) => exibirMensagem(result.json()));
+  );
+  const result = await apiResponse.json();
+  exibirMensagem(result);
 
   // implemente a consulta a partir daqui
 
