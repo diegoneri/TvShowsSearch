@@ -5,7 +5,7 @@ const handleSearch = async (event) => {
   const message = document.querySelector("#message");
 
   shows.innerHTML = "";
-  message.innerHTML = "procurando... não é o nemo";
+  message.innerHTML = "searching... not for nemo";
 
   const query = document.querySelector("#query").value;
 
