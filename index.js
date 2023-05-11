@@ -1,6 +1,14 @@
 const handleSearch = async (event) => {
   event.preventDefault();
 
+  const query = document.getElementById("query").value;
+
+  const apiResponse = await fetch(
+    `https://api.tvmaze.com/search/shows?q= + ${query}`
+  )
+    .then((response) => console.log(response))
+    .then((result) => exibirMensagem(result.json));
+
   // implemente a consulta a partir daqui
 
   //// Exemplo de endpoint: https://api.tvmaze.com/search/shows?q=lost
@@ -9,9 +17,6 @@ const handleSearch = async (event) => {
 
   //  #message: use para exibir mensagens aos usuário, por exemplo:
 
-  const message = document.querySelector('#message');
-  message.innerHTML = 'exercício ainda não resolvido.';
-
   //  #shows: conterá os shows, cada um em um <li>, por exemplo:
   // <li>
   //   <img class="poster" src="https://static.tvmaze.com/uploads/images/medium_portrait/0/1389.jpg" />
@@ -19,8 +24,13 @@ const handleSearch = async (event) => {
   // </li>
 };
 
-document.addEventListener('DOMContentLoaded', () => {
+const exibirMensagem = async (result) => {
+  const message = document.querySelector("#message");
+  message.innerHTML = result.length;
+};
+
+document.addEventListener("DOMContentLoaded", () => {
   document
-    .querySelector('#search-form')
-    .addEventListener('submit', handleSearch);
+    .querySelector("#search-form")
+    .addEventListener("submit", handleSearch);
 });
